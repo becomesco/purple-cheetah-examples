@@ -1,1 +1,1 @@
-# purple-cheetah-examples
+# Purple Cheetah - Examples

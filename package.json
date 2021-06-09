@@ -1,0 +1,52 @@
+{
+  "name": "@becomes/purple-cheetah-examples",
+  "version": "1.0.0",
+  "description": "Example projects for the Purple Cheetah",
+  "scripts": {
+    "hello-world": "nodemon hello-world/main.ts",
+    "lint": "eslint . --ext .ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/becomesco/purple-cheetah-examples.git"
+  },
+  "keywords": [],
+  "author": "Branislav Vajagić",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/becomesco/purple-cheetah-examples/issues"
+  },
+  "homepage": "https://purple-cheetah.dev/example",
+  "dependencies": {
+    "@becomes/purple-cheetah": "file:mods/purple-cheetah.tgz",
+    "@becomes/purple-cheetah-mod-fsdb": "file:mods/fsdb.tgz",
+    "@becomes/purple-cheetah-mod-graphql": "file:mods/graphql.tgz",
+    "@becomes/purple-cheetah-mod-ip-protection": "file:mods/ip-protection.tgz",
+    "@becomes/purple-cheetah-mod-jwt": "file:mods/jwt.tgz",
+    "@becomes/purple-cheetah-mod-mem-cache": "file:mods/mem-cache.tgz",
+    "@becomes/purple-cheetah-mod-mongodb": "file:mods/mongodb.tgz",
+    "@becomes/purple-cheetah-mod-socket": "file:mods/socket.tgz"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.12",
+    "@types/node": "^15.6.2",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "eslint": "^7.27.0",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.2.1",
+    "ts-node": "^8.10.2",
+    "tsconfig-paths": "^3.9.0",
+    "typedoc-neo-theme": "^1.1.0",
+    "typescript": "^4.2.4"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "graphql",
+      "hello-world",
+      "todo-fsdb",
+      "todo-mongodb"
+    ],
+    "ext": "ts"
+  }
+}

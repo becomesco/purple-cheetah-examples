@@ -1,0 +1,7 @@
+node_modules
+dist
+doc
+.idea
+mods
+logs
+*.fsdb.json
