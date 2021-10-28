@@ -3,25 +3,15 @@ import {
   createCorsMiddleware,
   createPurpleCheetah,
 } from '@becomes/purple-cheetah';
-import { createMongoDB } from '@becomes/purple-cheetah-mod-mongodb';
+import { createFSDB } from '@becomes/purple-cheetah-mod-fsdb';
 import { TodoController } from './controller';
 
 export default createPurpleCheetah({
   port: 1280,
-  logPath: 'todo-mongodb/logs',
+  logPath: 'todo/logs',
   modules: [
-    createMongoDB({
-      selfHosted: {
-        db: {
-          host: 'localhost',
-          name: 'purple-cheetah',
-          port: 27017,
-        },
-        user: {
-          name: 'purple',
-          password: 'cheetah',
-        },
-      },
+    createFSDB({
+      output: 'todo/todo',
     }),
   ],
   middleware: [createCorsMiddleware(), createBodyParserMiddleware()],

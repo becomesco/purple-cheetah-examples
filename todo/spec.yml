@@ -1,0 +1,159 @@
+openapi: '3.0.2'
+info:
+  version: '1.0.0'
+  title: 'Todo REST API'
+  description: 'Todo REST API using Purple Cheetah with FSDB.'
+servers:
+  - url: 'http://localhost:1280'
+    description: 'Local development'
+
+paths:
+  /todo/all:
+    get:
+      tags:
+        - Todo
+      summary: Get all todos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - todos
+                properties:
+                  todos:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Todo'
+  /todo/{idOrSlug}:
+    get:
+      tags:
+        - Todo
+      summary: Get todo by its ID or Slug.
+      parameters:
+        - in: path
+          name: idOrSlug
+          description: ID or Slug of specific todo.
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - todo
+                properties:
+                  todo:
+                    $ref: '#/components/schemas/Todo'
+  /todo:
+    post:
+      tags:
+        - Todo
+      summary: Create new todo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - todo
+                properties:
+                  todo:
+                    $ref: '#/components/schemas/Todo'
+    put:
+      tags:
+        - Todo
+      summary: Update existing todo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - _id
+              properties:
+                _id:
+                  type: string
+                name:
+                  type: string
+                completed:
+                  type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - todo
+                properties:
+                  todo:
+                    $ref: '#/components/schemas/Todo'
+  /todo/{id}:
+    delete:
+      tags:
+        - Todo
+      summary: Delete todo.
+      parameters:
+        - in: path
+          name: id
+          description: ID of todo to delete.
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - todo
+                properties:
+                  todo:
+                    $ref: '#/components/schemas/Todo'
+
+components:
+  schemas:
+    Todo:
+      type: object
+      required:
+        - _id
+        - createdAt
+        - updatedAt
+        - name
+        - slug
+        - completed
+      properties:
+        _id:
+          type: string
+        createdAt:
+          type: number
+        updatedAt:
+          type: number
+        name:
+          type: string
+        slug:
+          type: string
+        completed:
+          type: boolean
